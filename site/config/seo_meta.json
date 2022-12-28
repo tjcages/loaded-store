@@ -1,19 +1,19 @@
 {
-  "title": "ACME Storefront | Powered by Next.js Commerce",
-  "titleTemplate": "%s - ACME Storefront",
-  "description": "Next.js Commerce - https://www.nextjs.org/commerce",
+  "title": "LOADED | the sport & style of personal defense.",
+  "titleTemplate": "%s - LOADED",
+  "description": "the sport & style of personal defense - https://loaded.com",
   "openGraph": {
-    "title": "ACME Storefront | Powered by Next.js Commerce",
-    "description": "Next.js Commerce - https://www.nextjs.org/commerce",
+    "title": "LOADED | the sport & style of personal defense.",
+    "description": "the sport & style of personal defense - https://loaded.com",
     "type": "website",
-    "url": "https://nextjs.org/commerce",
-    "site_name": "Next.js Commerce",
+    "url": "https://loaded.com",
+    "site_name": "LOADED",
     "images": [
       {
         "url": "/card.png",
         "width": "800",
         "height": "600",
-        "alt": "Next.js Commerce"
+        "alt": "LOADED"
       }
     ]
   },

@@ -1,11 +1,11 @@
 {
-  "name": "Next.js Commerce",
-  "short_name": "Next.js Commerce",
-  "description": "Next.js Commerce -> https://www.nextjs.org/commerce",
+  "name": "LOADED",
+  "short_name": "LOADED",
+  "description": "the sport & style of personal defense - https://loaded.com",
   "display": "standalone",
   "start_url": "/",
-  "theme_color": "#fff",
-  "background_color": "#000000",
+  "theme_color": "#000",
+  "background_color": "#fff",
   "orientation": "portrait",
   "icons": [
     {
