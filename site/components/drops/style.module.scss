@@ -1,0 +1,125 @@
+.main {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  background: #f5f5f5;
+  color: #2b2b2b;
+
+  .canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0.25rem;
+    padding: 2rem 4rem 0;
+
+    width: 100%;
+
+    .title {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+
+      border-bottom: 1px solid #2b2b2b;
+
+      .h2 {
+        font-size: 64px;
+        line-height: 1.6em;
+
+        user-select: none;
+      }
+
+      .p {
+        font-size: 18px;
+        line-height: 2em;
+        text-transform: uppercase;
+
+        user-select: none;
+      }
+
+      .stamps {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+
+        .stamp {
+          margin-right: -36px;
+
+          mix-blend-mode: multiply;
+          opacity: 0.9;
+        }
+
+        .info {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+
+          max-width: 270px;
+          padding: 15px 20px 10px 40px;
+          border: 1px solid #2b2b2b;
+
+          text-align: center;
+          font-size: 24px;
+          line-height: 1.2em;
+          text-transform: uppercase;
+
+          user-select: none;
+        }
+      }
+    }
+
+    .subtitle {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+
+      border-bottom: 1px solid #2b2b2b;
+
+      .p {
+        font-size: 18px;
+        line-height: 1.7em;
+        text-transform: uppercase;
+
+        user-select: none;
+      }
+    }
+  }
+
+  .footer {
+    position: absolute;
+    left: auto;
+    right: auto;
+    bottom: -25%;
+
+    .h1 {
+      font-size: 38vw;
+      line-height: 1em;
+
+      user-select: none;
+
+      background: linear-gradient(140deg, #2b2b2b, rgba(43, 43, 43, 0.8));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+}
