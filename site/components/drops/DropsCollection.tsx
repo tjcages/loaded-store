@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
+import PhoneInput from 'react-phone-number-input/input'
+
 import styles from './style.module.scss'
 
 import Shader from './Shader'
 
 const DropsCollection = () => {
+  const [value, setValue] = useState('')
+
   return (
     <div className={styles.main}>
       <Shader />
@@ -30,7 +34,17 @@ const DropsCollection = () => {
           <div className={styles.p}>VOL#1 –– LA</div>
           <div className={styles.p}>January 2023</div>
           <div className={styles.p}>Page 01</div>
-          <div className={styles.p}>Three Cents</div>
+          <div className={styles.p}>Coming Soon</div>
+        </div>
+        <div className={styles.capture}>
+          <PhoneInput
+            className={styles.input}
+            placeholder="Enter phone number"
+            country="US"
+            value={value}
+            onChange={(value) => (value ? setValue(value) : setValue(''))}
+          />
+          <button className={styles.button}>Notify Me</button>
         </div>
       </div>
       <div className={styles.footer}>

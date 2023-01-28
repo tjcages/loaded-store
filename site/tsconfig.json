@@ -27,6 +27,6 @@
       "@framework/*": ["../packages/shopify/src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.d.ts", "**/*.ts", "**/*.tsx", "**/*.js"],
+  "include": ["next-env.d.ts", "**/*.d.ts", "**/*.ts", "**/*.tsx", "**/*.js", "components/drops/Drops2.jsx", "components/drops/Drops3.jsx"],
   "exclude": ["node_modules"]
 }

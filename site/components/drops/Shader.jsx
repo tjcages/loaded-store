@@ -1,6 +1,6 @@
 import { useRef, useMemo } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { SoftShadows } from '@react-three/drei'
+import { SoftShadows, OrbitControls } from '@react-three/drei'
 import styles from './style.module.scss'
 
 const easeInOutCubic = (t) =>
@@ -61,6 +61,50 @@ function Spheres({ number = 10 }) {
   )
 }
 
+function DirectionalLight() {
+  const ref = useRef()
+  useFrame((state) => {
+    ref.current.position.z = Math.sin(state.clock.getElapsedTime() / 10) * 20
+    ref.current.rotation.y =
+      Math.sin(state.clock.getElapsedTime() / 40) * Math.PI
+  })
+  return (
+    <directionalLight
+      ref={ref}
+      castShadow
+      position={[2.5, 8, 5]}
+      intensity={1.5}
+      shadow-mapSize={1024}
+    >
+      <orthographicCamera
+        attach="shadow-camera"
+        args={[-10, 10, -10, 10, 0.1, 50]}
+      />
+    </directionalLight>
+  )
+}
+
+function Box() {
+  const ref = useRef()
+  useFrame((state) => {
+    // ref.current.rotation.x = Math.sin(state.clock.getElapsedTime() / 10)
+    ref.current.rotation.y =
+      Math.sin(state.clock.getElapsedTime() / 40) * Math.PI
+  })
+  return (
+    <group ref={ref}>
+      <mesh receiveShadow castShadow position={[0, 0.1, 1]}>
+        <boxGeometry args={[5, 2, 2.5]} />
+        <meshLambertMaterial />
+      </mesh>
+      <mesh receiveShadow castShadow position={[0, 0, 1]}>
+        <boxGeometry args={[4.5, 2, 2]} />
+        <meshLambertMaterial />
+      </mesh>
+    </group>
+  )
+}
+
 export default function Shader() {
   return (
     <div className={styles.canvas}>
@@ -68,24 +112,11 @@ export default function Shader() {
         <SoftShadows near={5.5} />
         <fog attach="fog" args={['white', 0, 40]} />
         <ambientLight intensity={0.1} />
-        <directionalLight
-          castShadow
-          position={[2.5, 8, 5]}
-          intensity={1.5}
-          shadow-mapSize={1024}
-        >
-          <orthographicCamera
-            attach="shadow-camera"
-            args={[-10, 10, -10, 10, 0.1, 50]}
-          />
-        </directionalLight>
+        <DirectionalLight />
         <pointLight position={[2, 0, -20]} color="white" intensity={1} />
         <pointLight position={[0, -10, 0]} intensity={1} />
         <group position={[0, 0, 0]}>
-          <mesh receiveShadow castShadow>
-            <boxGeometry args={[5, 2, 2.5]} />
-            <meshLambertMaterial />
-          </mesh>
+          <Box />
           <mesh
             rotation={[-Math.PI / 2, 0, 0]}
             position={[0, -1, 0]}
@@ -96,6 +127,11 @@ export default function Shader() {
           </mesh>
           <Spheres />
         </group>
+        <OrbitControls
+          enableZoom={false}
+          minPolarAngle={Math.PI / 3}
+          maxPolarAngle={Math.PI / 2}
+        />
       </Canvas>
     </div>
   )

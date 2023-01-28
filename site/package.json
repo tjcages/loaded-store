@@ -36,6 +36,7 @@
     "body-scroll-lock": "^4.0.0-beta.0",
     "clsx": "^1.1.1",
     "email-validator": "^2.0.4",
+    "gl-noise": "^1.6.1",
     "js-cookie": "^3.0.1",
     "keen-slider": "^6.7.0",
     "lodash.random": "^3.2.0",
@@ -48,11 +49,13 @@
     "react-dom": "^18.2.0",
     "react-fast-marquee": "^1.3.1",
     "react-merge-refs": "^2.0.1",
+    "react-phone-number-input": "^3.2.16",
     "react-use-measure": "^2.1.1",
     "sass": "^1.57.1",
     "tabbable": "^5.2.1",
     "tailwindcss": "^3.0.13",
-    "three": "^0.148.0"
+    "three": "^0.148.0",
+    "three-custom-shader-material": "^5.1.2"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^12.0.8",
@@ -111,5 +114,10 @@
     "entrypoints": [
       "pages"
     ]
+  },
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
   }
 }
