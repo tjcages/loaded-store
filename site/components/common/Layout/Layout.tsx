@@ -17,6 +17,7 @@ import { MenuSidebarView } from '@components/common/UserNav'
 import type { Page } from '@commerce/types/page'
 import type { Category } from '@commerce/types/site'
 import type { Link as LinkProps } from '../UserNav/MenuSidebarView'
+import styles from '../../../styles/_main.module.scss'
 
 const Loading = () => (
   <div className="w-80 h-80 flex items-center text-center justify-center p-3">
@@ -118,7 +119,7 @@ const Layout: React.FC<Props> = ({
     <CommerceProvider locale={locale}>
       <div className={cn(s.root)}>
         <Navbar links={navBarlinks} />
-        <main className="fit">{children}</main>
+        <main className={styles.main}>{children}</main>
         <Footer pages={pageProps.pages} />
         <ModalUI />
         <CheckoutProvider>

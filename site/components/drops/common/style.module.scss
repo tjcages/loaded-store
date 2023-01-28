@@ -1,0 +1,176 @@
+@import '../../../styles/_variables';
+
+.main {
+  position: absolute;
+  top: auto;
+  left: auto;
+  right: auto;
+  bottom: auto;
+
+  perspective: 250px;
+
+  z-index: 1;
+  opacity: 0;
+
+  transition: opacity $animation_duration_short $animation_timing
+    $animation_delay_short;
+
+  animation-name: scale-easeOutBounce;
+  animation-duration: $animation_duration;
+  animation-timing-function: $animation_timing;
+  animation-delay: calc(random(3) * 0.1) + s;
+
+  .cutout {
+    min-height: 50px;
+
+    color: $color-100;
+    background-color: $color-700;
+
+    transform-style: preserve-3d;
+    transform: rotateX(5deg);
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.06) 0%,
+        rgba(0, 0, 0, 0.04) 25%,
+        rgba(0, 0, 0, 0.02) 75%,
+        rgba(0, 0, 0, 0.09) 100%
+      );
+      mask-image: $noise,
+        linear-gradient(
+          45deg,
+          #000 0%,
+          transparent 25%,
+          transparent 75%,
+          #000 100%
+        );
+    }
+  }
+
+  .cutout.accent {
+    color: $color-accent;
+  }
+
+  .cutout.invert {
+    color: $color-700;
+    background-color: $color-100;
+
+    &:after {
+      background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.2) 0%,
+        rgba(0, 0, 0, 0.2) 25%,
+        rgba(0, 0, 0, 0.1) 75%,
+        rgba(0, 0, 0, 0.4) 100%
+      );
+      mask-image: $noise,
+        linear-gradient(
+          45deg,
+          #000 0%,
+          transparent 30%,
+          transparent 50%,
+          #000 100%
+        );
+    }
+  }
+
+  .cutout.accent.invert {
+    color: $color-700;
+    background-color: $color-accent;
+  }
+
+  .input {
+    font-size: $font-size-200;
+    font-weight: $font_weight_200;
+    width: 200px;
+
+    color: $color_100;
+    outline: none;
+
+    &::placeholder {
+      color: $color-400;
+    }
+
+    &:focus {
+      zoom: 110%;
+    }
+  }
+
+  .button {
+    font-size: $font-size-200;
+    font-weight: $font_weight_200;
+
+    color: $color_100;
+
+    &:hover {
+      zoom: 110%;
+    }
+
+    &:disabled {
+      color: $color-400 !important;
+      background-color: $color-accent-secondary !important;
+      text-decoration: line-through;
+
+      cursor: not-allowed;
+    }
+  }
+}
+
+.main.input, .main.button {
+  transition: opacity $animation_duration_short $animation_timing
+    $animation_delay;
+
+  animation-name: scale-easeOutBounce;
+  animation-duration: $animation_duration;
+  animation-timing-function: $animation_timing;
+  animation-delay: $animation-delay;
+}
+
+@keyframes scale-easeOutBounce {
+  0% {
+    transform: scale(1);
+  }
+
+  12% {
+    transform: scale(1.39);
+  }
+
+  24% {
+    transform: scale(1.26);
+  }
+
+  36% {
+    transform: scale(1.02);
+  }
+
+  54% {
+    transform: scale(1.05);
+  }
+
+  74% {
+    transform: scale(1.02);
+  }
+
+  82% {
+    transform: scale(1.03);
+  }
+
+  92% {
+    transform: scale(1.01);
+  }
+
+  96% {
+    transform: scale(1.02);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
