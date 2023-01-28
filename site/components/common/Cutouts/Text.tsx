@@ -13,7 +13,7 @@ interface Props {
   invert?: boolean
 }
 
-const Cutout: FC<Props> = ({
+const Text: FC<Props> = ({
   text = 'Coming soon',
   top,
   left,
@@ -51,7 +51,7 @@ const Cutout: FC<Props> = ({
           padding: `${useRandomize(5, 10)}px ${useRandomize(
             10,
             15
-          )}px ${useRandomize(5, 15)}px
+          )}px ${useRandomize(5, 10)}px
         ${useRandomize(10, 20)}px`,
           clipPath: `polygon(${useRandomize(0, 20)}% 0%, 100% ${useRandomize(
             0,
@@ -80,4 +80,4 @@ const Cutout: FC<Props> = ({
   )
 }
 
-export default Cutout
+export default Text

@@ -4,9 +4,7 @@ import { isValidPhoneNumber } from 'react-phone-number-input'
 
 import styles from './style.module.scss'
 
-import Input from './common/Input'
-import Button from './common/Button'
-import Cutout from './common/Cutout'
+import {Text, Input, Button} from '../common/Cutouts'
 
 const NewComponent = () => {
   const [value, setValue] = useState('')
@@ -46,7 +44,7 @@ const NewComponent = () => {
           height={200}
         />
         {submitted ? (
-          <Cutout text={"You're in"} invert top={'45%'} left={'35%'} />
+          <Text text={"You're in"} invert top={'45%'} left={'35%'} />
         ) : (
           <>
             <Input
@@ -70,13 +68,13 @@ const NewComponent = () => {
           </>
         )}
 
-        <Cutout text={"World's greatest"} top={-20} />
-        <Cutout text={'Sporting gear'} top={10} right={-10} />
+        <Text text={"World's greatest"} top={-20} />
+        <Text text={'Sporting gear'} top={10} right={-10} />
 
-        <Cutout text={'Winter'} accent bottom={20} left={0} />
-        <Cutout text={'Drop'} accent bottom={0} />
-        <Cutout text={'2023'} accent bottom={-10} right={140} />
-        <Cutout text={'Coming Soon'} accent bottom={40} right={-10} />
+        <Text text={'Winter'} accent bottom={20} left={0} />
+        <Text text={'Drop'} accent bottom={0} />
+        <Text text={'2023'} accent bottom={-10} right={140} />
+        <Text text={'Coming Soon'} accent bottom={40} right={-10} />
       </div>
     </div>
   )
