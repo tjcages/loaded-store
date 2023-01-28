@@ -34,7 +34,8 @@
     "**/*.tsx",
     "**/*.js",
     "components/drops/Drops2.jsx",
-    "components/drops/Component.jsx"
+    "components/drops/Component.jsx",
+    "components/drops/_Old.jsx"
   ],
   "exclude": ["node_modules"]
 }
