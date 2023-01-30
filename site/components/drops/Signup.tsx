@@ -35,7 +35,7 @@ const NewComponent = () => {
   }
 
   return (
-    <div className={styles.main}>
+    <section className={styles.main}>
       <div className={styles.content}>
         <Image
           priority
@@ -51,7 +51,7 @@ const NewComponent = () => {
           <>
             <Input
               top={'45%'}
-              right={'40%'}
+              right={mobile ? "30%" : '35%'}
               value={value}
               setValue={(value) => {
                 setValue(value)
@@ -63,7 +63,7 @@ const NewComponent = () => {
               accent
               invert
               top={'45%'}
-              left={'55%'}
+              left={mobile ? "65%" : '62%'}
               onClick={handleSubmit}
               disabled={disabled}
             />
@@ -83,7 +83,7 @@ const NewComponent = () => {
           right={mobile ? 20 : -10}
         />
       </div>
-    </div>
+    </section>
   )
 }
 

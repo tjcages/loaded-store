@@ -1,6 +1,7 @@
-import React, { useEffect, useState, FC } from 'react'
+import React, { useEffect, useState, useRef, FC } from 'react'
 import PhoneInput from 'react-phone-number-input/input'
-import { useRandom } from '../../../hooks/random'
+import { cutout } from './cutout'
+import { useRandomize, useRandom } from '../../../hooks/random'
 
 import styles from './style.module.scss'
 
@@ -27,12 +28,18 @@ const Cutout: FC<Props> = ({
   invert,
   value,
   setValue,
-  enterPressed
+  enterPressed,
 }) => {
+  const ref = useRef<HTMLHeadingElement>(null)
   const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
     setIsMounted(true)
+
+    const shape = ref.current
+    if (shape) {
+      cutout(shape, 7)
+    }
   }, [])
 
   return (
@@ -51,6 +58,7 @@ const Cutout: FC<Props> = ({
       }}
     >
       <PhoneInput
+        ref={ref}
         placeholder={text}
         country="US"
         value={value}
@@ -69,14 +77,7 @@ const Cutout: FC<Props> = ({
             5,
             15
           )}px
-          ${useRandom(10, 20)}px`,
-          clipPath: `polygon(${useRandom(0, 20)}% 0%, 100% ${useRandom(
-            0,
-            15
-          )}%, ${useRandom(80, 100)}% ${useRandom(60, 100)}%, 0 ${useRandom(
-            60,
-            100
-          )}%, 0 ${useRandom(0, 40)}%`,
+          ${useRandom(20, 30)}px`,
           transform: `rotate3d(${useRandom(-1, 1)}, ${useRandom(
             -1,
             1
@@ -87,6 +88,7 @@ const Cutout: FC<Props> = ({
             -1,
             1
           )}px, ${useRandom(-1, 1)}px, ${useRandom(-1, 1)}px)`,
+          maskSize: `${useRandomize(90, 100)}%`,
         }}
       />
     </div>

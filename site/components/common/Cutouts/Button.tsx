@@ -1,6 +1,7 @@
-import React, { useEffect, useState, FC } from 'react'
-import PhoneInput from 'react-phone-number-input/input'
-import { useRandom } from '../../../hooks/random'
+import React, { useEffect, useState, useRef, FC } from 'react'
+import Image from 'next/image'
+import { cutout } from './cutout'
+import { useRandomize, useRandom } from '../../../hooks/random'
 
 import styles from './style.module.scss'
 
@@ -26,15 +27,23 @@ const Cutout: FC<Props> = ({
   onClick,
   disabled,
 }) => {
+  const ref = useRef<HTMLButtonElement>(null)
   const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
     setIsMounted(true)
+
+    const shape = ref.current
+    if (shape) {
+      cutout(shape)
+    }
   }, [])
+
+  const positions = ['top', 'left', 'right', 'bottom', 'center']
 
   return (
     <div
-    className={`${styles.main} ${styles.button}`}
+      className={`${styles.main} ${styles.button}`}
       style={{
         top,
         left,
@@ -48,6 +57,7 @@ const Cutout: FC<Props> = ({
       }}
     >
       <button
+        ref={ref}
         onClick={onClick}
         disabled={disabled}
         className={`${styles.button} ${styles.cutout} ${
@@ -76,9 +86,17 @@ const Cutout: FC<Props> = ({
             -1,
             1
           )}px, ${useRandom(-1, 1)}px, ${useRandom(-1, 1)}px)`,
+          maskSize: `${useRandomize(100, 400)}% ${useRandomize(100, 400)}%`,
+          maskPosition: `${positions[useRandomize(0, positions.length - 1)]}`,
         }}
       >
-        Submit
+        Subscribe
+        <Image
+          src={`/textures/plastic/plastic_${useRandomize(1, 12)}.png`}
+          alt={'texture'}
+          fill
+          style={{ opacity: 0.3 }}
+        />
       </button>
     </div>
   )

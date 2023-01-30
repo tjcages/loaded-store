@@ -13,6 +13,22 @@
   color: $color_100;
   background: $color_800;
 
+  section {
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      background-color: $color_600;
+      background-image: url('/textures/paper/paper.png');
+      mask-image: url('/textures/plastic/plastic_' + random(12) + '.png');
+      mask-size: 100%;
+    }
+  }
+
   h1 {
     font-size: $font-size-600;
     font-weight: $font_weight_300;

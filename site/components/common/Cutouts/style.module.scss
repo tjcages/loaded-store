@@ -21,13 +21,16 @@
   animation-delay: calc(random(3) * 0.1) + s;
 
   .cutout {
-    min-height: 50px;
+    min-height: 40px;
 
     color: $color-100;
-    background-color: $color-700;
+    background-color: $color-800;
 
     transform-style: preserve-3d;
     transform: rotateX(5deg);
+
+    mask-size: percentage((random(300) + 100) / 100);
+    mask-repeat: no-repeat;
 
     &:after {
       content: '';
@@ -104,6 +107,8 @@
   }
 
   .button {
+    min-height: 50px;
+
     font-size: $font-size-200;
     font-weight: $font_weight_200;
 
@@ -121,9 +126,52 @@
       cursor: not-allowed;
     }
   }
+
+  .image {
+    position: absolute;
+
+    min-width: 600px;
+    min-height: 600px;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.2) 0%,
+      rgba(255, 255, 255, 0.2) 25%,
+      rgba(255, 255, 255, 0.1) 75%,
+      rgba(255, 255, 255, 0.4) 100%
+    );
+    mask-image: $noise,
+      linear-gradient(
+        45deg,
+        #000 0%,
+        transparent 30%,
+        transparent 50%,
+        #000 100%
+      );
+  }
+
+  .edge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background-color: $color-600;
+    opacity: 0.3;
+  }
 }
 
-.main.input, .main.button {
+.main.input,
+.main.button {
   transition: opacity $animation_duration_short $animation_timing
     $animation_delay;
 
