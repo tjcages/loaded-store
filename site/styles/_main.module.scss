@@ -10,10 +10,11 @@
 
   width: 100vw;
 
-  color: $color_100;
-  background: $color_800;
+  color: $color-100;
+  background: $color-800;
 
   section {
+    position: relative;
     &:before {
       content: '';
       position: absolute;
@@ -22,62 +23,65 @@
       right: 0;
       bottom: 0;
 
-      background-color: $color_600;
+      background-color: $color-800;
       background-image: url('/textures/paper/paper.png');
-      mask-image: url('/textures/plastic/plastic_' + random(12) + '.png');
       mask-size: 100%;
+      mix-blend-mode: multiply;
+      opacity: 0.5;
     }
   }
 
   h1 {
     font-size: $font-size-600;
-    font-weight: $font_weight_300;
+    font-weight: $font-weight-300;
     text-align: center;
+    line-height: 1em;
 
-    color: $color_100;
+    color: $color-100;
   }
 
   h2 {
     font-size: $font-size-500;
-    font-weight: $font_weight_300;
+    font-weight: $font-weight-300;
+    line-height: 1em;
 
-    color: $color_100;
+    color: $color-100;
   }
 
   h3 {
     font-size: $font-size-400;
-    font-weight: $font_weight_300;
+    font-weight: $font-weight-300;
 
-    color: $color_100;
+    color: $color-100;
   }
 
   h4 {
     font-size: $font-size-300;
-    font-weight: $font_weight_200;
+    font-weight: $font-weight-200;
 
-    color: $color_300;
+    color: $color-200;
   }
 
   h5 {
     font-size: $font-size-200;
-    font-weight: $font_weight_200;
+    font-weight: $font-weight-200;
 
-    color: $color_100;
+    color: $color-100;
   }
 
   p {
     font-family: $font-secondary;
     font-size: $font-size-100;
-    font-weight: $font_weight_100;
+    font-weight: $font-weight-100;
 
-    color: $color_300;
+    color: $color-300;
   }
 
   strong {
     font-family: $font-primary;
     font-size: $font-size-100;
-    font-weight: $font_weight_100;
+    font-weight: $font-weight-100;
 
-    color: $color_500;
+    color: $color-500;
   }
 }

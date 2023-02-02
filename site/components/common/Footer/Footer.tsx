@@ -4,11 +4,9 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import type { Page } from '@commerce/types/page'
 import getSlug from '@lib/get-slug'
-import { Github, Vercel } from '@components/icons'
 import { Logo, Container } from '@components/ui'
 import { I18nWidget } from '@components/common'
-import ThemeSwitcher from '@components/ui/ThemeSwitcher'
-import s from './Footer.module.css'
+import styles from './styles.module.scss'
 
 interface Props {
   className?: string
@@ -18,17 +16,17 @@ interface Props {
 
 const links = [
   {
-    name: 'Home',
+    name: 'Drops',
     url: '/',
   },
 ]
 
 const Footer: FC<Props> = ({ className, pages }) => {
   const { sitePages } = usePages(pages)
-  const rootClassName = cn(s.root, className)
+  const rootClassName = cn(styles.root, className)
 
   return (
-    <footer className={rootClassName}>
+    <section className={rootClassName}>
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 border-b border-accent-2 py-12 text-primary bg-primary transition-colors duration-150">
           <div className="col-span-1 lg:col-span-2">
@@ -37,7 +35,6 @@ const Footer: FC<Props> = ({ className, pages }) => {
               className="flex flex-initial items-center font-bold md:mr-24"
             >
               <Logo className="mr-2" />
-              <span>LOADED</span>
             </Link>
           </div>
           <div className="col-span-1 lg:col-span-7">
@@ -66,11 +63,11 @@ const Footer: FC<Props> = ({ className, pages }) => {
             <span>&copy; 2023 LOADED, Inc. All rights reserved.</span>
           </div>
           <div className="flex items-center text-primary text-sm">
-            <span className="text-primary">LOADED</span>
+            <h5 className="text-primary">LOADED</h5>
           </div>
         </div>
       </Container>
-    </footer>
+    </section>
   )
 }
 

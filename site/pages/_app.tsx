@@ -2,6 +2,7 @@ import '@assets/main.css'
 import '@assets/chrome-bug.css'
 import 'keen-slider/keen-slider.min.css'
 import '../styles/globals.css'
+import styles from '../styles/_main.module.scss'
 
 import { FC, ReactNode, useEffect } from 'react'
 import type { AppProps } from 'next/app'
@@ -22,7 +23,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   }, [])
 
   return (
-    <main className={whalebone.className}>
+    <main className={`${whalebone.className} ${styles.main}`}>
       <Head />
       <ManagedUIContext>
         <Layout pageProps={pageProps}>

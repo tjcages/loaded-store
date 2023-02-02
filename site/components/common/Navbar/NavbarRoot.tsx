@@ -1,7 +1,7 @@
 import { FC, useState, useEffect, ReactNode } from 'react'
 import throttle from 'lodash.throttle'
 import cn from 'clsx'
-import s from './Navbar.module.css'
+import styles from './styles.module.scss'
 
 const NavbarRoot: FC<{ children?: ReactNode }> = ({ children }) => {
   const [hasScrolled, setHasScrolled] = useState(false)
@@ -24,9 +24,9 @@ const NavbarRoot: FC<{ children?: ReactNode }> = ({ children }) => {
   }, [hasScrolled])
 
   return (
-    <div className={cn(s.root, { 'shadow-magical': hasScrolled })}>
+    <section className={cn(styles.root, { 'shadow-magical': hasScrolled })}>
       {children}
-    </div>
+    </section>
   )
 }
 

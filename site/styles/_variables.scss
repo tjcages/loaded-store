@@ -1,14 +1,15 @@
 /* COLORS */
 $color-100: #1e1a1b;
 $color-200: #3f3d3e;
-$color-300: #5E5A5C;
-$color-400: #A5A1A3;
+$color-300: #5e5a5c;
+$color-400: #a5a1a3;
 $color-500: #e8eaed;
 $color-600: #f3f4f6;
 $color-700: #fbfcff;
 $color-800: #ffffff;
 $color-accent: #d61f50; // ua red
-$color-accent-secondary: #A1173C; // big dip oruby
+$color-accent-secondary: #a1173c; // big dip oruby
+$color-paper: #ebeded;
 
 /* SHADOW */
 $shadow-standard: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -20,19 +21,10 @@ $font-secondary: '--untitledSans-284bd9', '--untitledSans-Fallback-284bd9';
 /* FONT SIZE */
 $font-size-100: clamp(16px, 1vw, 18px);
 $font-size-200: clamp(20px, 2vw, 24px);
-$font-size-300: clamp(36px, 5vw, 44px);
+$font-size-300: clamp(36px, 4vw, 48px);
 $font-size-400: clamp(48px, 6vw, 80px);
 $font-size-500: clamp(56px, 7vw, 100px);
 $font-size-600: clamp(72px, 14vw, 140px);
-
-@media only screen and (max-width: 768px) {
-  $font-size-100: 18px;
-  $font-size-200: 20px;
-  $font-size-300: 36px;
-  $font-size-400: 48px;
-  $font-size-500: 56px;
-  $font-size-600: 64px;
-}
 
 /* FONT WEIGHT */
 $font-weight-100: 300;

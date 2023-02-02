@@ -12,6 +12,21 @@
   justify-content: center;
   align-items: center;
 
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background-color: $color-800;
+    background-image: url('/textures/paper/paper.png');
+    mask-size: 100%;
+    mix-blend-mode: multiply;
+    opacity: 0.5;
+  }
+
   .content {
     position: relative;
 

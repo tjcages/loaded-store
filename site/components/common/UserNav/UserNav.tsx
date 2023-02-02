@@ -57,7 +57,7 @@ const UserNav: React.FC<{
             </Button>
           </li>
         )}
-        {process.env.COMMERCE_WISHLIST_ENABLED && (
+        {/* {process.env.COMMERCE_WISHLIST_ENABLED && (
           <li className={s.item}>
             <Link href="/wishlist" legacyBehavior>
               <a onClick={closeSidebarIfPresent} aria-label="Wishlist">
@@ -81,7 +81,7 @@ const UserNav: React.FC<{
               <CustomerMenuContent />
             </Dropdown>
           </li>
-        )}
+        )} */}
         <li className={s.mobileMenu}>
           <Button
             className={s.item}

@@ -1,0 +1,57 @@
+@import '../../../styles/_variables';
+
+.main {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: $padding-400 0;
+  width: 100%;
+  max-width: 100vw;
+
+  overflow: hidden;
+
+  .tear {
+    position: relative;
+
+    width: 120%;
+    height: 80px;
+
+    .image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      opacity: 0.7;
+    }
+
+    &.bottom {
+      transform: rotate(180deg);
+    }
+  }
+
+  .marquee {
+    display: flex;
+    flex-direction: row;
+    gap: $padding-200;
+
+    overflow: hidden;
+
+    background-color: $color-paper;
+
+    .products {
+      display: flex;
+      flex-direction: row;
+      gap: $padding-500;
+
+      .product {
+        height: 200px;
+      }
+    }
+  }
+}

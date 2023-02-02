@@ -30,7 +30,6 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
             <ProductTag
               name={product.name}
               price={`${price} ${product.price?.currencyCode}`}
-              fontSize={32}
             />
             <div className={s.sliderContainer}>
               <ProductSlider key={product.id}>
@@ -49,13 +48,13 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
                 ))}
               </ProductSlider>
             </div>
-            {process.env.COMMERCE_WISHLIST_ENABLED && (
+            {/* {process.env.COMMERCE_WISHLIST_ENABLED && (
               <WishlistButton
                 className={s.wishlistButton}
                 productId={product.id}
                 variant={product.variants[0]}
               />
-            )}
+            )} */}
           </div>
 
           <ProductSidebar
@@ -65,30 +64,6 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
           />
         </div>
         <hr className="mt-7 border-accent-2" />
-        <section className="py-12 px-6 mb-10">
-          <Text variant="sectionHeading">Related Products</Text>
-          <div className={s.relatedProductsGrid}>
-            {relatedProducts.map((p) => (
-              <div
-                key={p.path}
-                className="animated fadeIn bg-accent-0 border border-accent-2"
-              >
-                <ProductCard
-                  noNameTag
-                  product={p}
-                  key={p.path}
-                  variant="simple"
-                  className="animated fadeIn"
-                  imgProps={{
-                    alt: p.name,
-                    width: 300,
-                    height: 300,
-                  }}
-                />
-              </div>
-            ))}
-          </div>
-        </section>
       </Container>
       <SEO
         title={product.name}

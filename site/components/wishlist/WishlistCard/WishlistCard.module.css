@@ -4,10 +4,6 @@
   transition duration-100 ease-in-out;
 }
 
-.root:nth-child(3n + 1) .imageWrapper {
-  @apply bg-violet;
-}
-
 .root:nth-child(3n + 2) .imageWrapper {
   @apply bg-pink;
 }

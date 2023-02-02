@@ -1,53 +1,41 @@
-import { FC } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
-import s from './Navbar.module.css'
+
+import styles from './styles.module.scss'
+
 import NavbarRoot from './NavbarRoot'
-import { Logo, Container } from '@components/ui'
-import { Searchbar, UserNav } from '@components/common'
+import { Logo } from '@components/ui'
+import { UserNav } from '@components/common'
+import { Text } from '@components/common/Cutouts'
 
 interface Link {
   href: string
   label: string
 }
 
-interface NavbarProps {
-  links?: Link[]
-}
-
-const Navbar: FC<NavbarProps> = ({ links }) => (
+const Navbar = () => (
   <NavbarRoot>
-    <Container clean className="mx-auto max-w-8xl px-6">
-      <div className={s.nav}>
-        <div className="flex items-center flex-1">
-          <Link href="/" className={s.logo} aria-label="Logo">
+    <div className={styles.main}>
+      {/* Texture */}
+      <div className={`${styles.tear} ${styles.bottom}`}>
+        <Image src="/textures/paper/ripped-7.png" alt={'paper texture'} fill />
+      </div>
+
+      {/* Nav bar */}
+      <div className={styles.content}>
+        <div className={styles.left}>
+          <Link href="/" className={styles.logo}>
             <Logo />
           </Link>
-          <nav className={s.navMenu}>
-            <Link href="/search" className={s.link}>
-              All
-            </Link>
-            {links?.map((l) => (
-              <Link href={l.href} key={l.href} className={s.link}>
-                {l.label}
-              </Link>
-            ))}
-          </nav>
+
+          <h5>Drop 001</h5>
         </div>
-        {process.env.COMMERCE_SEARCH_ENABLED && (
-          <div className="justify-center flex-1 hidden lg:flex">
-            <Searchbar />
-          </div>
-        )}
-        <div className="flex items-center justify-end flex-1 space-x-8">
-          <UserNav />
+        <div className={styles.title}>
+          <h4>LOADED</h4>
         </div>
+        <UserNav />
       </div>
-      {process.env.COMMERCE_SEARCH_ENABLED && (
-        <div className="flex pb-4 lg:px-6 lg:hidden">
-          <Searchbar id="mobile-search" />
-        </div>
-      )}
-    </Container>
+    </div>
   </NavbarRoot>
 )
 

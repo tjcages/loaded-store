@@ -5,7 +5,7 @@ import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 
 import styles from '../styles/_main.module.scss'
 
-import Product from '../components/demo'
+import { Grid } from '../components/common/Cutouts'
 
 export async function getStaticProps({
   preview,
@@ -42,8 +42,16 @@ export default function Home({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
-      <div className={styles.main}>
-        <Product />
+      <div
+        className={styles.main}
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '100vh',
+        }}
+      >
+        <Grid src="/demo/close_7.avif" float top="10%" left="25%" />
       </div>
     </>
   )

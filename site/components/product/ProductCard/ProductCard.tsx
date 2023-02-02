@@ -2,8 +2,9 @@ import { FC } from 'react'
 import cn from 'clsx'
 import Link from 'next/link'
 import type { Product } from '@commerce/types/product'
-import s from './ProductCard.module.css'
+import styles from './styles.module.scss'
 import Image, { ImageProps } from 'next/image'
+import { Photo } from '@components/common/Cutouts'
 import WishlistButton from '@components/wishlist/WishlistButton'
 import usePrice from '@framework/product/use-price'
 import ProductTag from '../ProductTag'
@@ -32,8 +33,11 @@ const ProductCard: FC<Props> = ({
   })
 
   const rootClassName = cn(
-    s.root,
-    { [s.slim]: variant === 'slim', [s.simple]: variant === 'simple' },
+    styles.root,
+    {
+      [styles.slim]: variant === 'slim',
+      [styles.simple]: variant === 'simple',
+    },
     className
   )
 
@@ -45,7 +49,7 @@ const ProductCard: FC<Props> = ({
     >
       {variant === 'slim' && (
         <>
-          <div className={s.header}>
+          <div className={styles.header}>
             <span>{product.name}</span>
           </div>
           {product?.images && (
@@ -61,46 +65,11 @@ const ProductCard: FC<Props> = ({
         </>
       )}
 
-      {variant === 'simple' && (
-        <>
-          {process.env.COMMERCE_WISHLIST_ENABLED && (
-            <WishlistButton
-              className={s.wishlistButton}
-              productId={product.id}
-              variant={product.variants[0]}
-            />
-          )}
-          {!noNameTag && (
-            <div className={s.header}>
-              <h3 className={s.name}>
-                <span>{product.name}</span>
-              </h3>
-              <div className={s.price}>
-                {`${price} ${product.price?.currencyCode}`}
-              </div>
-            </div>
-          )}
-          <div className={s.imageContainer}>
-            {product?.images && (
-              <Image
-                alt={product.name || 'Product Image'}
-                className={s.productImage}
-                src={product.images[0]?.url || placeholderImg}
-                height={540}
-                width={540}
-                quality="85"
-                {...imgProps}
-              />
-            )}
-          </div>
-        </>
-      )}
-
       {variant === 'default' && (
         <>
           {process.env.COMMERCE_WISHLIST_ENABLED && (
             <WishlistButton
-              className={s.wishlistButton}
+              className={styles.wishlistButton}
               productId={product.id}
               variant={product.variants[0] as any}
             />
@@ -109,16 +78,11 @@ const ProductCard: FC<Props> = ({
             name={product.name}
             price={`${price} ${product.price?.currencyCode}`}
           />
-          <div className={s.imageContainer}>
+          <div className={styles.productImage}>
             {product?.images && (
-              <Image
-                alt={product.name || 'Product Image'}
-                className={s.productImage}
+              <Photo
                 src={product.images[0]?.url || placeholderImg}
-                height={540}
-                width={540}
-                quality="85"
-                {...imgProps}
+                alt={product.name || 'Product Image'}
               />
             )}
           </div>
