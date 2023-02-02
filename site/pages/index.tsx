@@ -40,13 +40,13 @@ export default function Home({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <section>
-      <Grid products={products.slice(0, 3)} />
       <Grid products={products.slice(4, 6)} />
+      <Grid products={products.slice(0, 3)} />
 
       <Marquee />
 
-      <Grid products={products.slice(3, 6)} />
       <Grid products={products.slice(0, 2)} />
+      <Grid products={products.slice(3, 6)} />
 
       <div
         style={{
