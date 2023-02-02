@@ -11,7 +11,8 @@
 
   padding: $padding-400 $padding-400;
   min-width: 1000px;
-  max-width: 1200px;
+  max-width: 1400px;
+  margin: 0 auto;
 
   &.one {
     grid-template-columns: repeat(1, 1fr);
