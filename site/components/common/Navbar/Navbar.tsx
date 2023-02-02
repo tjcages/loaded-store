@@ -6,7 +6,6 @@ import styles from './styles.module.scss'
 import NavbarRoot from './NavbarRoot'
 import { Logo } from '@components/ui'
 import { UserNav } from '@components/common'
-import { Text } from '@components/common/Cutouts'
 
 interface Link {
   href: string
