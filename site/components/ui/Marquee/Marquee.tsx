@@ -28,7 +28,7 @@ const Marquee: FC<Props> = ({ products }) => {
         />
       </div>
       <FastMarquee gradient={false} className={styles.marquee}>
-        <h1>LOADED // DROP 001 //</h1>
+        <h1>LOADED –– DROP 001 –– </h1>
         <div className={styles.products}>
           {products &&
             products.slice(0, Math.floor(products.length / 2)).map(
@@ -43,7 +43,7 @@ const Marquee: FC<Props> = ({ products }) => {
                 )
             )}
         </div>
-        <h1>LOADED // SPORTING GOODS //</h1>
+        <h1>LOADED –– SPORTING GOODS –– </h1>
         <div className={styles.products}>
           {products &&
             products

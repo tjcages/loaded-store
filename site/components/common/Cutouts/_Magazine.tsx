@@ -97,13 +97,13 @@ const Magazine: FC<Props> = ({
         />
         <div className={styles.overlay} />
         <Image
-          src={`/textures/plastic/plastic_${useRandom(1, 12)}.png`}
+          src={`/textures/plastic/plastic_${useRandomize(1, 12)}.png`}
           alt={'texture'}
           fill
           style={{ opacity: 0.4 }}
         />
         <Image
-          src={`/textures/film/film_${useRandom(1, 6)}.png`}
+          src={`/textures/film/film_${useRandomize(1, 6)}.png`}
           alt={'film'}
           fill
           style={{

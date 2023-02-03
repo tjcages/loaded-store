@@ -38,6 +38,8 @@
     line-height: 1em;
 
     color: $color-100;
+    text-shadow: rgba(63, 61, 62, 0.3) 0px 4px 6px,
+      rgba(94, 90, 92, 0.2) 0px -3px 5px; // top
   }
 
   h2 {
@@ -46,6 +48,8 @@
     line-height: 1em;
 
     color: $color-100;
+    text-shadow: rgba(63, 61, 62, 0.3) 0px 4px 6px,
+      rgba(94, 90, 92, 0.2) 0px -3px 5px; // top
   }
 
   h3 {
@@ -53,6 +57,8 @@
     font-weight: $font-weight-300;
 
     color: $color-100;
+    text-shadow: rgba(63, 61, 62, 0.3) 0px 4px 6px,
+      rgba(94, 90, 92, 0.2) 0px -3px 5px; // top
   }
 
   h4 {
@@ -60,6 +66,8 @@
     font-weight: $font-weight-200;
 
     color: $color-200;
+    text-shadow: rgba(63, 61, 62, 0.2) 0px 4px 4px,
+      rgba(94, 90, 92, 0.1) 0px -3px 3px; // top
   }
 
   h5 {
@@ -67,6 +75,8 @@
     font-weight: $font-weight-200;
 
     color: $color-100;
+    text-shadow: rgba(63, 61, 62, 0.2) 0px 4px 4px,
+      rgba(94, 90, 92, 0.1) 0px -3px 3px; // top
   }
 
   p {

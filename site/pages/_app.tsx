@@ -10,8 +10,9 @@ import localFont from '@next/font/local'
 import { Head } from '@components/common'
 import { ManagedUIContext } from '@components/ui/context'
 
-// const nueva = localFont({ src: '../public/fonts/NuevaCondensed-Italic.otf' })
-const whalebone = localFont({ src: '../public/fonts/Whalebone.otf' })
+const scripton = localFont({
+  src: '../public/fonts/scripton_regular-webfont.woff2',
+})
 
 const Noop: FC<{ children?: ReactNode }> = ({ children }) => <>{children}</>
 
@@ -23,7 +24,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   }, [])
 
   return (
-    <main className={`${whalebone.className} ${styles.main}`}>
+    <main className={`${scripton.className} ${styles.main}`}>
       <Head />
       <ManagedUIContext>
         <Layout pageProps={pageProps}>
