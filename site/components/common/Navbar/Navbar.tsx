@@ -27,7 +27,7 @@ const Navbar = () => (
             <Logo />
           </Link>
 
-          <h5>Drop 001</h5>
+          {/* <h5>Drop 001</h5> */}
         </div>
         <div className={styles.title}>
           <h4>LOADED</h4>

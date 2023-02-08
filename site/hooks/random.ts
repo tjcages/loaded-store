@@ -17,7 +17,7 @@ export function useRandomize(min: number, max: number) {
         randomize()
       }, random(2, 4) * 1000)
     }
-    randomize()
+    return randomize()
   }, [max, min])
 
   return number

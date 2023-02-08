@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useEffect, useState } from 'react'
 import cn from 'clsx'
 import Link from 'next/link'
 import type { Product } from '@commerce/types/product'
@@ -8,24 +8,21 @@ import { Photo } from '@components/common/Cutouts'
 import WishlistButton from '@components/wishlist/WishlistButton'
 import usePrice from '@framework/product/use-price'
 import ProductTag from '../ProductTag'
+import ProductSidebar from '../ProductSidebar'
 
 interface Props {
   className?: string
   product: Product
   noNameTag?: boolean
   imgProps?: Omit<ImageProps, 'src' | 'layout' | 'placeholder' | 'blurDataURL'>
-  variant?: 'default' | 'slim' | 'simple'
 }
 
 const placeholderImg = '/product-img-placeholder.svg'
 
-const ProductCard: FC<Props> = ({
-  product,
-  imgProps,
-  className,
-  noNameTag = false,
-  variant = 'default',
-}) => {
+const ProductCard: FC<Props> = ({ product, imgProps, className }) => {
+  const [hover, setHover] = useState(false)
+  const [counter, setCounter] = useState(0)
+
   const { price } = usePrice({
     amount: product.price.value,
     baseAmount: product.price.retailPrice,
@@ -35,59 +32,68 @@ const ProductCard: FC<Props> = ({
   const rootClassName = cn(
     styles.root,
     {
-      [styles.slim]: variant === 'slim',
-      [styles.simple]: variant === 'simple',
+      [styles.hover]: hover,
     },
     className
   )
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCounter((c) => {
+        const next = c + 1
+        if (next > product?.images.length) {
+          return 0
+        }
+        return next
+      })
+    }, 1500)
+    if (!hover && counter > 0) {
+      // clear the timeout if the mouse leaves
+      setCounter(0)
+    }
+    return () => clearInterval(interval)
+  }, [counter, hover, product?.images.length])
+
+  const index = counter % product?.images.length
+  const item = product?.images[index]
 
   return (
     <Link
       href={`/product/${product.slug}`}
       className={rootClassName}
       aria-label={product.name}
+      onMouseEnter={() => {
+        setHover(true)
+        if (product?.images.length > 1) setCounter(1)
+      }}
+      onMouseLeave={() => setHover(false)}
     >
-      {variant === 'slim' && (
-        <>
-          <div className={styles.header}>
-            <span>{product.name}</span>
-          </div>
-          {product?.images && (
-            <Image
-              quality="85"
-              src={product.images[0]?.url || placeholderImg}
-              alt={product.name || 'Product Image'}
-              height={320}
-              width={320}
-              {...imgProps}
-            />
-          )}
-        </>
+      {process.env.COMMERCE_WISHLIST_ENABLED && (
+        <WishlistButton
+          className={styles.wishlistButton}
+          productId={product.id}
+          variant={product.variants[0] as any}
+        />
       )}
-
-      {variant === 'default' && (
-        <>
-          {process.env.COMMERCE_WISHLIST_ENABLED && (
-            <WishlistButton
-              className={styles.wishlistButton}
-              productId={product.id}
-              variant={product.variants[0] as any}
-            />
-          )}
-          <ProductTag
-            name={product.name}
-            price={`${price} ${product.price?.currencyCode}`}
+      <ProductTag
+        name={product.name}
+        price={`${price} ${product.price?.currencyCode}`}
+      />
+      {/* {hover && (
+        <ProductSidebar
+          key={product.id}
+          product={product}
+          // className={s.sidebar}
+        />
+      )} */}
+      <div className={styles.productImage}>
+        {product?.images && (
+          <Photo
+            src={item.url || placeholderImg}
+            alt={product.name || 'Product Image'}
           />
-          <div className={styles.productImage}>
-            {product?.images && (
-              <Photo
-                src={product.images[0]?.url || placeholderImg}
-                alt={product.name || 'Product Image'}
-              />
-            )}
-          </div>
-        </>
-      )}
+        )}
+      </div>
     </Link>
   )
 }

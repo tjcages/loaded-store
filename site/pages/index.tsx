@@ -2,6 +2,7 @@ import commerce from '@lib/api/commerce'
 import { Layout } from '@components/common'
 import { Grid, Marquee } from '@components/ui'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
+import type { Product } from '@commerce/types/product'
 
 import { Grid as Magazine } from '../components/common/Cutouts'
 
@@ -12,21 +13,36 @@ export async function getStaticProps({
 }: GetStaticPropsContext) {
   const config = { locale, locales }
   const productsPromise = commerce.getAllProducts({
-    variables: { first: 6 },
+    variables: { first: 10 },
     config,
-    preview,
-    // Saleor provider only
-    ...({ featured: true } as any),
+    preview: false,
   })
+  const productPromise = (slug: string = '') =>
+    commerce.getProduct({
+      variables: { slug: slug },
+      config,
+      preview,
+    })
+
   const pagesPromise = commerce.getAllPages({ config, preview })
   const siteInfoPromise = commerce.getSiteInfo({ config, preview })
+
+  // get preview of all products
   const { products } = await productsPromise
+  // get full product data for each product
+  const fullProductsPromise = products.map(async (previewProduct) => {
+    const { product } = await productPromise(previewProduct.slug)
+    return product
+  }) as Promise<Product>[]
+
   const { pages } = await pagesPromise
   const { categories, brands } = await siteInfoPromise
 
+  const fullProducts: Product[] = await Promise.all(fullProductsPromise)
+
   return {
     props: {
-      products,
+      products: fullProducts,
       categories,
       brands,
       pages,

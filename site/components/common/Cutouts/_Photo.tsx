@@ -75,7 +75,7 @@ const Photo: FC<Props> = ({
         quality="85"
         fill
         style={{
-          opacity: 0.5,
+          opacity: 0.4,
           mixBlendMode: 'overlay',
           maskImage: `url(${src})`,
         }}
