@@ -55,6 +55,7 @@ const Photo: FC<Props> = ({
         quality="85"
         width={600}
         height={600}
+        style={{ width: '100%', height: 'auto' }}
       />
       <div className={styles.overlay} />
       <Image

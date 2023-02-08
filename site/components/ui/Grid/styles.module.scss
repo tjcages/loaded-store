@@ -25,4 +25,15 @@
   &.three {
     grid-template-columns: repeat(3, 1fr);
   }
+
+  @media only screen and (max-width: 768px) {
+    & {
+      display: flex;
+      flex-direction: column;
+      gap: $padding-400;
+
+      min-width: auto;
+      max-width: 100vw;
+    }
+  }
 }
