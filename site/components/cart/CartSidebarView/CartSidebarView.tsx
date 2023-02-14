@@ -41,8 +41,8 @@ const CartSidebarView: FC = () => {
     >
       {isLoading || isEmpty ? (
         <div className="flex-1 px-4 flex flex-col justify-center items-center">
-          <span className="border border-dashed border-primary rounded-full flex items-center justify-center w-16 h-16 p-12 bg-secondary text-secondary">
-            <Bag className="absolute" />
+          <span className="border border-dashed border-secondary rounded-full flex items-center justify-center w-16 h-16 p-12 text-secondary">
+            <Bag className="absolute" color="black" />
           </span>
           <h2 className="pt-6 text-2xl font-bold tracking-wide text-center">
             Your cart is empty

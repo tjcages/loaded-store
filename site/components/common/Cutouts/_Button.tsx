@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef, FC } from 'react'
+import cn from 'clsx'
 import Image from 'next/image'
 import { cutout } from './cutout'
 import { useRandomize, useRandom } from '../../../hooks/random'
@@ -16,9 +17,11 @@ interface Props {
   invert?: boolean
   onClick?: () => void
   disabled?: boolean
+  className?: string | undefined
 }
 
 const Cutout: FC<Props> = ({
+  text = 'Subscribe',
   float,
   top,
   left,
@@ -28,9 +31,19 @@ const Cutout: FC<Props> = ({
   invert,
   onClick,
   disabled,
+  className,
 }) => {
   const ref = useRef<HTMLButtonElement>(null)
   const [isMounted, setIsMounted] = useState(false)
+
+  const rootClassName = cn(
+    styles.main,
+    styles.button,
+    {
+      [styles.float]: float,
+    },
+    className
+  )
 
   useEffect(() => {
     setIsMounted(true)
@@ -45,7 +58,7 @@ const Cutout: FC<Props> = ({
 
   return (
     <div
-      className={`${styles.main} ${styles.button} ${float ? styles.float : ''}`}
+      className={rootClassName}
       style={{
         top,
         left,
@@ -92,7 +105,7 @@ const Cutout: FC<Props> = ({
           maskPosition: `${positions[useRandomize(0, positions.length - 1)]}`,
         }}
       >
-        Subscribe
+        {text}
         <Image
           src={`/textures/plastic/plastic_${useRandomize(1, 12)}.png`}
           alt={'texture'}

@@ -2,13 +2,14 @@ import { FC, useEffect, useState } from 'react'
 import cn from 'clsx'
 import Link from 'next/link'
 import type { Product } from '@commerce/types/product'
-import styles from './styles.module.scss'
-import Image, { ImageProps } from 'next/image'
+import styles from './style.module.scss'
+import { ImageProps } from 'next/image'
 import { Photo } from '@components/common/Cutouts'
 import WishlistButton from '@components/wishlist/WishlistButton'
 import usePrice from '@framework/product/use-price'
 import ProductTag from '../ProductTag'
-import ProductSidebar from '../ProductSidebar'
+import QuickBuy from '../QuickBuy'
+import { useRandomize, useRandom } from '../../../hooks/random'
 
 interface Props {
   className?: string
@@ -57,6 +58,29 @@ const ProductCard: FC<Props> = ({ product, imgProps, className }) => {
   const index = counter % product?.images.length
   const item = product?.images[index]
 
+  const left = useRandomize(0, 1)
+  const leftStable = useRandom(0, 1)
+  const top = useRandom(0, 1)
+
+  // get the position of the tag
+  const tagPosition =
+    left == 0
+      ? top == 0
+        ? 'topLeft'
+        : 'bottomLeft'
+      : top == 0
+      ? 'topRight'
+      : 'bottomRight'
+  // opposite of the tag position
+  const previewPosition =
+    leftStable == 1
+      ? top == 1
+        ? 'topLeft'
+        : 'bottomLeft'
+      : top == 1
+      ? 'topRight'
+      : 'bottomRight'
+
   return (
     <Link
       href={`/product/${product.slug}`}
@@ -78,14 +102,15 @@ const ProductCard: FC<Props> = ({ product, imgProps, className }) => {
       <ProductTag
         name={product.name}
         price={`${price} ${product.price?.currencyCode}`}
+        position={tagPosition}
       />
-      {/* {hover && (
-        <ProductSidebar
+      {hover && (
+        <QuickBuy
           key={product.id}
           product={product}
-          // className={s.sidebar}
+          position={previewPosition}
         />
-      )} */}
+      )}
       <div className={styles.productImage}>
         {product?.images && (
           <Photo

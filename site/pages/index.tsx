@@ -88,7 +88,7 @@ export default function Home({
         </div>
       </div>
 
-      <Marquee products={products.slice(0, 4)} />
+      <Marquee />
     </section>
   )
 }

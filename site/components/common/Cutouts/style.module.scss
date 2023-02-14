@@ -54,6 +54,7 @@
           transparent 75%,
           #000 100%
         );
+      pointer-events: none;
     }
   }
 
@@ -211,7 +212,7 @@
     position: relative;
 
     width: auto;
-    max-height: clamp(100px, 50vh, 600px);
+    max-height: clamp(100px, 50vh, 400px);
     height: 100%;
 
     transform-origin: center center;

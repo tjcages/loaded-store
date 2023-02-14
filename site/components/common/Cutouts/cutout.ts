@@ -46,10 +46,10 @@ export function cutout(shape: HTMLElement, max: number | undefined = 8) {
 
 export function cutoutGrid(
   shape: HTMLElement,
-  topLeft: boolean | undefined,
-  topRight: boolean | undefined,
-  bottomLeft: boolean | undefined,
-  bottomRight: boolean | undefined
+  topLeft?: boolean | undefined,
+  topRight?: boolean | undefined,
+  bottomLeft?: boolean | undefined,
+  bottomRight?: boolean | undefined
 ) {
   let minX = 0
   let minY = 0
